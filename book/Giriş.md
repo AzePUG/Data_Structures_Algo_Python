@@ -1,15 +1,15 @@
-#Giriş
+# Giriş
 
 Alqoritmlər və digər müxtəlif məsələlərdən danışmazdan qabaq, istərdik ki, sizə bünövrə təşkil edən ilkin məlumatları verək.
 Bunlardan ilki dəyişənlər(variables) mövzusudur.
 
-##1.1 Dəyişənlər(variables)
+## 1.1 Dəyişənlər(variables)
 Dəyişənlərin tərifinə keçməzdən öncə, gəlin onları hər hansı riyazi bərabərliklə əlaqələndirək. Hər birimiz, uşaq yaşlarımızdan riyazi bərabərliklərin bir çoxunu görmüşük. Misal üçün aşağıdakına diqqət yetirək:
 `x^2 + 2y - 2 = 1`
 
 Bu bərabərliyin istifadə yeri hal-hazırda bizə maraqlı deyil. Bizə maraqlı olan hissə budur ki, bərabərlikdə müəyyən "ad"lardan istifadə olunub (x və y), və bu adlar özündə məlumat saxlayır(ehtiva edir). Başqa cür desək, x və y müəyyən məlumatın saxlanılma(eyni zamanda göstərilmə) şəklidir. Eynilə, kompüter elmlərində də, biz məlumatı saxlamaq üçün dəyişənlərə ehtiyac duyuruq.
 
-##1.2 Məlumat tipləri(data types)
+## 1.2 Məlumat tipləri(data types)
 Yuxarıdakı bərabərlikdə, biz x və y-in yerinə hər hansı real ədəd(0.23, 5.5) və yaxud sadəcə 0 və 1 gözləyirik.
 Bərabərliyi həll etmək üçün bu x və y-i onların ala biləcəyi(qəbul edə biləcəyi) hər hansı dəyərə bərabərləşdirməliyik və bu işin adına kompüter elmlərində data tipləri deyilir. Başqa cür izah edəsi olsaq, data tip əvvəlcədən müəyyən olunmuş datadır.
 Data tiplərdən bəzilərinə misal çəkə bilərik: integer, floating point, string və.s
