@@ -84,3 +84,24 @@ Alqoritm üçün formal tərif vermək lazım olsa:
 * Effektivlik (alqoritm icra olunan zaman nə qədər vaxt və yaddaş(RAM) aparır).
 
 > QEYD: Biz alqoritmin hər addımını sübut etməli deyilik. Əksinə bizə yekun nəticə maraqlıdır.
+
+## 1.6 Nəyə görə alqoritmlərin analizi vacibdir?
+Deyək ki, biz şərti A məntəqəsindən B məntəqəsinə getməliyik. Bu yolu qət etmək üçün bizə uyğun olan bir neçə seçim var: avtobusla, maşınla, velosipedlə həttə təyyarə ilə gedə bilərik.
+Eyni ilə bir problemi, məsələni həll etmək üçün bir neçə alqoritm mövcud ola bilər(məsələn, sıralama məsələsi üçün bir çox alqoritm mövcuddur, insertion sort, selection sort, quick sort və.s)
+Alqoritmləri analiz etmək, bizə vaxt və yaddaş cəhətdən ən uyğun alqoritmi seçməyə kömək edir.
+
+## 1.7 Alqoritmləri analiz etməyin məqsədi nədir?
+Alqoritmlərin analizinin(öyrənilməsinin) məqsədi, onları öz aralarında əsasən işləmə vaxtı(əvvəldən sonra qədər keçən vaxt) cəhətdən müqayisə etməkdir. Lakin, alqortimləri öyrənərkən(analiz edərkən) digər göstəricilərə də əhəmiyyət verilə bilər, məsələn. programlaşdırma əziyyəti(development effort), yaddaş problemi və.s
+
+## 1.8 İşləmə vaxtı analizi nədir?(Running Time Analysis)
+Bir şeyi qeyd etmək lazımdır ki, standart olaraq alqoritm üçün giriş məlumatı gərəklidir və bu giriş məlumatın həcmi(input size) və tipi müxtəlif ola bilər. İşləmə vaxtı analizinin əsas məqsədi, müəyyən bir alqoritmin, giriş məlumatının həcmi artdıqca özünü necə apardığını aşkarlamaqdır. Daha dəqiq desək, bu analizin nəticəsində, biz aşkarlayırıq ki, alqoritmin işləmə vaxtı giriş məlumat həcmindən nə dərəcədə asılılıq göstərir.
+Aşağıdakılar ümumi giriş məlumat tipləridir:
+* Massiv həcmi(size of an array)
+* Matrisin elementlərinin sayı
+* Qrafın uc və kənarları
+
+## 1.9 Alqoritmləri necə müqayisə etməli?
+Alqoritmləri müqayisə etmək üçün, bizə müəyyən bir ölçü növləri(meyar) gərəklidir.
+Bunlar nə ola bilər?
+* İcra olunma vaxtı? - Bu tip müqayisə əslində, doğru deyil. Çünki, CPU,RAM və.s göstəricilərdən asılı olaraq, bir kompüterdə az vaxt aparan alqoritm, digərində çox vaxt apara bilər və beləcə bizim müqayisəmizə mənfi təsir göstərə bilər.
+* Kodda icra olunanların sayı?(number of statements) - Bu da düzgün müqayisə meyarı deyil, çünki sətr sayı, operator sayı və.s proqramlaşdırma dilləri arasında fərqlilik göstərə bilər. Həmçinin, hər proqramçının özünə məxsus proqramlaşdırma üsulları(stili) var ki, bunlar da fərqlidir.
