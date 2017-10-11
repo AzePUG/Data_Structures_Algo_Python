@@ -152,8 +152,11 @@ Alqoritmləri analiz etmək üçün, bizə xüsusi bir syntax lazımdır, bu da 
 Bundan əlavə alqoritm üçün orta halı da aşkarlamaq mümkündür.
 
 * Orta hal
+
         * Orta hal, alqoritmanın işləmə vaxtı haqqında proqnoz verir
+
         * Alqoritmi bir neçə dəfə, müxtəlif input-larla icra edib, icra olunma vaxtını qeyd edirik. Ayrı-ayrı icra vaxtlarını toplayıb yekun vaxtı tapırıq. Daha sonra, bu vaxtı icra olunma sayına bölürük.
+        
         * Orta hal, elə qəbul edir ki, daxil olan məlumatlar ixtiyaridir(random).
 
           `Aşağı sərhəd <= Orta vaxt <= Yuxarı sərhəd`
@@ -162,6 +165,8 @@ Verilmiş alqoritm üçün, biz ən pis, ən yaxşı və orta halı ifadələrl�
 Gəlin elə qəbul edək ki, f(n) funksiyası verilmiş alqoritmi göstərir.
 Bu zaman misal üçün qeyd edə bilərik:
           `f(n) = n^2 + 500, ən pis hal üçün`
+
+
           `f(n) = n + 100n + 500, ən yaxşı hal üçün`
 
 ## 1.13 Asimptotik işarələr sistemi(notation)
