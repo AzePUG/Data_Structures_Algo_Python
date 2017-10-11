@@ -105,3 +105,67 @@ Alqoritmləri müqayisə etmək üçün, bizə müəyyən bir ölçü növləri(
 Bunlar nə ola bilər?
 * İcra olunma vaxtı? - Bu tip müqayisə əslində, doğru deyil. Çünki, CPU,RAM və.s göstəricilərdən asılı olaraq, bir kompüterdə az vaxt aparan alqoritm, digərində çox vaxt apara bilər və beləcə bizim müqayisəmizə mənfi təsir göstərə bilər.
 * Kodda icra olunanların sayı?(number of statements) - Bu da düzgün müqayisə meyarı deyil, çünki sətr sayı, operator sayı və.s proqramlaşdırma dilləri arasında fərqlilik göstərə bilər. Həmçinin, hər proqramçının özünə məxsus proqramlaşdırma üsulları(stili) var ki, bunlar da fərqlidir.
+
+## 1.10 Böyümə sürəti(dərəcəsi) nədir? (Rate of Growth)
+Girdiyə bağlı olaraq, əməliyyat müddətinin artdığı sürətə böyümə sürəti deyilir(Rusca: скорость, с которой увеличивается время работы в зависимости от ввода, называется скоростью роста).
+Gəlin elə təsəvvür edək ki, biz həm maşın, həm də velosiped almaq fikrindəyik. Bu zaman yolüstü dostumuzla qarşılaşırıq və o bizdən soruşur ki, nə almağa gedirik? Çox böyük ehtimal biz maşın almaq üçün getdiyimizi deyəcik, çünki maşın daha bahalıdır.
+Ümumiləşdirəsi olsaq, bizim ümumi xərcimiz:
+`Ümumi məbləğ = maşının_pulu + velosipedin_pulu`
+Lakin, qəbul edirik ki, velosipedin pulu maşına nəzərən nəzərə çarpmır və biz təqribən belə bir şey əldə edirik:
+`Ümumi məbləğ ≈ maşının_pulu`
+
+Bu real həyatdakı misalı, funksiya kimi göstərməyə çalışsaq, belə deyə bilərik ki, aşağı dərəcəsi olan əmsalları sadəcə gözardı edə bilərik. Daha dəqiq aşağıdakı funksiyaya baxaq:
+`n^4 + 2n^2 + 100n + 500`
+
+Yuxarıdakı dediklərimizi nəzərə alsaq, belə deyə bilərik ki, bizim üçün yuxarıdakı funksiyada ən əhəmiyyətli `n^4`-dür və bu faktiki böyümə dərəcəsidir.
+
+## 1.11 Tez-tez istifadə olunan böyümə dərəcələri
+
+Aşağıdakı cədvəldə, gələcək fəsillərdə, qarşılaşacağımız böyümə dərəcələri sıralanıb:
+
+
+| Vaxt mürəkkəbliyi        | Adı        | Misal  |
+| -------------          |:-------------:| -----:|
+| 1                      | Sabit(constant)     | Bağlı listin önünə element əlavə etmək |
+| logn                   | Loqarifmik          | Sıralanmış massivdə elementin tapılması |
+| n                      | Xətti               | Sıralanmamış(qarışıq) massivdə elementin tapılması|
+| nlogn                  | Xətti-loqarifmik    | Mergesort alqoritmi |
+| n^2                    | Kvadratik           | Qrafda 2 node arasında ən qısa yolun tapılması |
+| n^3                    | Kubik               | Matrisin vurulması |
+| 2^n                    | Eksponensial        | Hanoi qüllələri problemi |
+
+
+## 1.12 Analiz tipləri
+
+Verilmiş alqoritmi analiz edə bilməmiz üçün, onun hansı halda ən az, hansı halda ən çox vaxt apardığını müəyyən etməliyik.
+Daha dəqiq desək, hansı daxil olan məlumatda(input) ən az və ən çox vaxt alır.
+Alqoritm üçün onun az vaxt aparması müsbət hal olduğu üçün, bunu ən yaxşı hal kimi qiymətləndirə bilərik. Alqoritmin ən çox vaxt apardığı hal, onun ən pis halıdır.
+Alqoritmləri analiz etmək üçün, bizə xüsusi bir syntax lazımdır, bu da asimptotik analizin/işarələr sisteminin əsasıdır.
+
+* Ən pis hal
+        * Elə bir girdini(daxil olan, input) göstərir ki, bu zaman alqoritm çox vaxtda icra olunur.(slowest time to complete).
+        * Elə input-dur ki, alqoritm onu emal edərkən ən çox vaxt gedir.
+* Ən yaxşı hal
+        * Elə bir girdini(daxil olan, input) göstərir ki, bu zaman alqoritm az vaxtda icra olunur.(fastest time to complete).
+        * Elə input-dur ki, alqoritm onu emal edərkən ən az vaxt gedir.
+
+Bundan əlavə alqoritm üçün orta halı da aşkarlamaq mümkündür.
+
+* Orta hal
+        * Orta hal, alqoritmanın işləmə vaxtı haqqında proqnoz verir
+        * Alqoritmi bir neçə dəfə, müxtəlif input-larla icra edib, icra olunma vaxtını qeyd edirik. Ayrı-ayrı icra vaxtlarını toplayıb yekun vaxtı tapırıq. Daha sonra, bu vaxtı icra olunma sayına bölürük.
+        * Orta hal, elə qəbul edir ki, daxil olan məlumatlar ixtiyaridir(random).
+
+          `Aşağı sərhəd <= Orta vaxt <= Yuxarı sərhəd`
+
+Verilmiş alqoritm üçün, biz ən pis, ən yaxşı və orta halı ifadələrlə(expressions) göstərə bilərik.
+Gəlin elə qəbul edək ki, f(n) funksiyası verilmiş alqoritmi göstərir.
+Bu zaman misal üçün qeyd edə bilərik:
+          `f(n) = n^2 + 500, ən pis hal üçün`
+          `f(n) = n + 100n + 500, ən yaxşı hal üçün`
+
+## 1.13 Asimptotik işarələr sistemi(notation)
+
+Yuxarıda da göstərdiyimiz kimi, ən yaxşı, ən pis və orta hal üçün biz yuxarı və aşağı həddi(sərhəddi) müəyyən etməliyik.
+Bu yuxarı və aşağı həddi göstərmək üçün, bizim hansısa xüsusi syntax-a ehtiyacımız var. Aşağıdakı müzakirəmizdə bunun haqqında danışacıq.
+Elə qəbul edirik ki, f(n) funksiyası verilmiş alqoritmi göstərir.
