@@ -143,9 +143,12 @@ Alqoritm üçün onun az vaxt aparması müsbət hal olduğu üçün, bunu ən y
 Alqoritmləri analiz etmək üçün, bizə xüsusi bir syntax lazımdır, bu da asimptotik analizin/işarələr sisteminin əsasıdır.
 
 * Ən pis hal
+
         * Elə bir girdini(daxil olan, input) göstərir ki, bu zaman alqoritm çox vaxtda icra olunur.(slowest time to complete).
         * Elə input-dur ki, alqoritm onu emal edərkən ən çox vaxt gedir.
+
 * Ən yaxşı hal
+
         * Elə bir girdini(daxil olan, input) göstərir ki, bu zaman alqoritm az vaxtda icra olunur.(fastest time to complete).
         * Elə input-dur ki, alqoritm onu emal edərkən ən az vaxt gedir.
 
@@ -154,9 +157,7 @@ Bundan əlavə alqoritm üçün orta halı da aşkarlamaq mümkündür.
 * Orta hal
 
         * Orta hal, alqoritmanın işləmə vaxtı haqqında proqnoz verir
-
         * Alqoritmi bir neçə dəfə, müxtəlif input-larla icra edib, icra olunma vaxtını qeyd edirik. Ayrı-ayrı icra vaxtlarını toplayıb yekun vaxtı tapırıq. Daha sonra, bu vaxtı icra olunma sayına bölürük.
-        
         * Orta hal, elə qəbul edir ki, daxil olan məlumatlar ixtiyaridir(random).
 
           `Aşağı sərhəd <= Orta vaxt <= Yuxarı sərhəd`
