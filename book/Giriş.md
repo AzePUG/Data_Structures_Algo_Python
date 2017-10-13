@@ -5,7 +5,8 @@ Bunlardan ilki dəyişənlər(variables) mövzusudur.
 
 ## 1.1 Dəyişənlər(variables)
 Dəyişənlərin tərifinə keçməzdən öncə, gəlin onları hər hansı riyazi bərabərliklə əlaqələndirək. Hər birimiz, uşaq yaşlarımızdan riyazi bərabərliklərin bir çoxunu görmüşük. Misal üçün aşağıdakına diqqət yetirək:
-`x^2 + 2y - 2 = 1`
+
+![](http://mathurl.com/y83drvhc.png)
 
 Bu bərabərliyin istifadə yeri hal-hazırda bizə maraqlı deyil. Bizə maraqlı olan hissə budur ki, bərabərlikdə müəyyən "ad"lardan istifadə olunub (x və y), və bu adlar özündə məlumat saxlayır(ehtiva edir). Başqa cür desək, x və y müəyyən məlumatın saxlanılma(eyni zamanda göstərilmə) şəklidir. Eynilə, kompüter elmlərində də, biz məlumatı saxlamaq üçün dəyişənlərə ehtiyac duyuruq.
 
@@ -26,7 +27,7 @@ Sistem tərəfindən təyin olunmuş(təqdim olunan) data tiplərinə Primitiv d
 Demək olar ki, bütün proqramlaşdırma dillərində təqdim olunan primit data tiplərdən bəzilərinə misal olaraq: int, float, char, double, bool və.s
 Hər primitiv data tipinə ayrılan bit sayı, proqramlaşdırma dilindən, kompilyatordan və istifadə olunan əməliyyat sistemindən asılı olaraq fərqlilik təşkil edə bilər. Eyni tip üçün hər proqramlaşdırma dili, müxtəlif bit ölçüsü istifadə edə bilər.
 
-Məsələn, deyək ki, bir proqramlaşdırma dilində int tipi 2 bayt(16 bit) yer tutur, bu o deməkdir ki, həmin tipin ala biləcəyi dəyər,-32,768  +32,767 (-2^15 +2^15-1) aralığında olacaqdır. Yox əgər, 4 bayt(32 bit) yer tutursa o zaman bu dəyər -2,147,483,648 ilə +2,147,483,647 aralığına düşəcək. Eyni hal, digər tiplər üçün də doğrudur.
+Məsələn, deyək ki, bir proqramlaşdırma dilində int tipi 2 bayt(16 bit) yer tutur, bu o deməkdir ki, həmin tipin ala biləcəyi dəyər,![](http://mathurl.com/y77gqnam.png) aralığında olacaqdır. Yox əgər, 4 bayt(32 bit) yer tutursa o zaman bu dəyər -2,147,483,648 ilə +2,147,483,647 aralığına düşəcək. Eyni hal, digər tiplər üçün də doğrudur.
 
 ## İstifadəçi tərəfindən elan olunan tiplər(user-defined)
 Bəzən elə olur ki, sistem tərəfindən verilən tiplər yetərsiz qalır və bu zaman biz öz tiplərimizi elan edirik.
@@ -114,8 +115,9 @@ Gəlin elə təsəvvür edək ki, biz həm maşın, həm də velosiped almaq fik
 Lakin, qəbul edirik ki, velosipedin pulu maşına nəzərən nəzərə çarpmır və biz təqribən belə bir şey əldə edirik:
 `Ümumi məbləğ ≈ maşının_pulu`
 
-Bu real həyatdakı misalı, funksiya kimi göstərməyə çalışsaq, belə deyə bilərik ki, aşağı dərəcəsi olan əmsalları sadəcə gözardı edə bilərik. Daha dəqiq aşağıdakı funksiyaya baxaq:
-`n^4 + 2n^2 + 100n + 500`
+Bu real həyatdakı misalı, funksiya kimi göstərməyə çalışsaq, belə deyə bilərik ki, aşağı dərəcəsi olan əmsalları sadəcə gözardı edə bilərik. Daha dəqiq aşağıdakı funksiyaya baxaq
+
+![](http://mathurl.com/y7ptbuqf.png)
 
 Yuxarıdakı dediklərimizi nəzərə alsaq, belə deyə bilərik ki, bizim üçün yuxarıdakı funksiyada ən əhəmiyyətli `n^4`-dür və bu faktiki böyümə dərəcəsidir.
 
@@ -130,9 +132,9 @@ Aşağıdakı cədvəldə, gələcək fəsillərdə, qarşılaşacağımız böy
 | logn                   | Loqarifmik          | Sıralanmış massivdə elementin tapılması |
 | n                      | Xətti               | Sıralanmamış(qarışıq) massivdə elementin tapılması|
 | nlogn                  | Xətti-loqarifmik    | Mergesort alqoritmi |
-| n^2                    | Kvadratik           | Qrafda 2 node arasında ən qısa yolun tapılması |
-| n^3                    | Kubik               | Matrisin vurulması |
-| 2^n                    | Eksponensial        | Hanoi qüllələri problemi |
+| ![](http://mathurl.com/yafn3p7.png)                    | Kvadratik           | Qrafda 2 node arasında ən qısa yolun tapılması |
+| ![](http://mathurl.com/3st5xbm.png)                    | Kubik               | Matrisin vurulması |
+| ![](http://mathurl.com/77vkzef.png)                    | Eksponensial        | Hanoi qüllələri problemi |
 
 
 ## 1.12 Analiz tipləri
@@ -163,24 +165,29 @@ Bundan əlavə alqoritm üçün orta halı da aşkarlamaq mümkündür.
           `Aşağı sərhəd <= Orta vaxt <= Yuxarı sərhəd`
 
 Verilmiş alqoritm üçün, biz ən pis, ən yaxşı və orta halı ifadələrlə(expressions) göstərə bilərik.
-Gəlin elə qəbul edək ki, f(n) funksiyası verilmiş alqoritmi göstərir.
+Gəlin elə qəbul edək ki, `f(n)` funksiyası verilmiş alqoritmi göstərir.
 Bu zaman misal üçün qeyd edə bilərik:
-          `f(n) = n^2 + 500, ən pis hal üçün`
 
+![](http://mathurl.com/ycwdgx7v.png) - ən pis hal üçün
 
-          `f(n) = n + 100n + 500, ən yaxşı hal üçün`
+![](http://mathurl.com/y9rnmfpm.png) - ən yaxşı hal üçün`
 
 ## 1.13 Asimptotik işarələr sistemi(notation)
 
 Yuxarıda da göstərdiyimiz kimi, ən yaxşı, ən pis və orta hal üçün biz yuxarı və aşağı həddi(sərhəddi) müəyyən etməliyik.
 Bu yuxarı və aşağı həddi göstərmək üçün, bizim hansısa xüsusi syntax-a ehtiyacımız var. Aşağıdakı müzakirəmizdə bunun haqqında danışacıq.
-Elə qəbul edirik ki, f(n) funksiyası verilmiş alqoritmi göstərir.
+Elə qəbul edirik ki, `f(n)` funksiyası verilmiş alqoritmi göstərir.
 
 ## 1.14 Böyük-O(Big-O) notation
 Bu notasiya verilmiş funksiya üçün qəti yuxarı həddi göstərir. Ümumən, bu `f(n)=O(g(n))` kimi göstərilir.
-Bu o deməkdir ki, n-nin böyük qiymətləri üçün, f(n)-nin yuxarı həddi g(n)-dir.
-Məsələn, əgər ![Formula](http://mathurl.com/ybe97pyc)
+Bu o deməkdir ki, n-nin böyük qiymətləri üçün, `f(n)`-nin yuxarı həddi `g(n)`-dir.
+Məsələn, əgər ![](http://mathurl.com/ybe97pyc.png)
+verilmiş alqoritmdirsə, o zaman `n^4`, `g(n)`-dir. Bu o deməkdir ki, `g(n)`, `n`-nin böyük qiymətlərində maksimum böyümə sürəti(dərəcəsi) verir.
 
-`f(n)=n^4 + 100n^2 + 10n + 5` verilmiş alqoritmdirsə, o zaman n^4, g(n)-dir. Bu o deməkdir ki, g(n), n-nin böyük qiymətlərində maksimum böyümə sürəti(dərəcəsi) verir.
+O-notasiya haqqında biraz daha danışaq.O-notasiya O(g(n)) = {f(n): bütün n >= ![](http://mathurl.com/y958kh7d.png) üçün müsbət c və ![](http://mathurl.com/y958kh7d.png) üçün 0 <= f(n) <= cg(n) doğrudur}.
+`g(n)` burada, `f(n)` üçün asimptotik üst sərhəddir.
 
-O-notasiya haqqında biraz daha danışaq.O-notasiya O(g(n)) = {f(n): bütün n >= n_{0} müsbət c və n_{0} üçün 0 <= f(n) <= cg(n)}
+Bizim burdakı istəyimiz odur ki, elə bir g(n)-nin ən kiçik artım sürətini verək ki, o, verilmiş alqoritmin f(n) artım sürətinə böyük bərabər olsun.
+
+Ümumən isə, biz n-dən kiçik dəyərlərə əhəmiyyət verimirik. Bu o deməkdir ki, n-nin kiçik dəyərindən aşağı artım sürəti bizə gərək deyil. Qrafikdə, verilmiş alqoritm üçün artım sürətinə ![](http://mathurl.com/y958kh7d.png) dəyərindən diqqət yetirməliyik. ![](http://mathurl.com/y958kh7d.png)-dən aşağı dəyərlərdə artım sürəti fərqlilik təşkil edə bilər.
+![](http://mathurl.com/y958kh7d.png) bu funksiya başlanğıc nöqtə hesab olunur(threshold).
