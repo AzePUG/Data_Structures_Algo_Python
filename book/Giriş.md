@@ -175,3 +175,12 @@ Bu zaman misal üçün qeyd edə bilərik:
 Yuxarıda da göstərdiyimiz kimi, ən yaxşı, ən pis və orta hal üçün biz yuxarı və aşağı həddi(sərhəddi) müəyyən etməliyik.
 Bu yuxarı və aşağı həddi göstərmək üçün, bizim hansısa xüsusi syntax-a ehtiyacımız var. Aşağıdakı müzakirəmizdə bunun haqqında danışacıq.
 Elə qəbul edirik ki, f(n) funksiyası verilmiş alqoritmi göstərir.
+
+## 1.14 Böyük-O(Big-O) notation
+Bu notasiya verilmiş funksiya üçün qəti yuxarı həddi göstərir. Ümumən, bu `f(n)=O(g(n))` kimi göstərilir.
+Bu o deməkdir ki, n-nin böyük qiymətləri üçün, f(n)-nin yuxarı həddi g(n)-dir.
+Məsələn, əgər ![Formula](http://mathurl.com/ybe97pyc)
+
+`f(n)=n^4 + 100n^2 + 10n + 5` verilmiş alqoritmdirsə, o zaman n^4, g(n)-dir. Bu o deməkdir ki, g(n), n-nin böyük qiymətlərində maksimum böyümə sürəti(dərəcəsi) verir.
+
+O-notasiya haqqında biraz daha danışaq.O-notasiya O(g(n)) = {f(n): bütün n >= n_{0} müsbət c və n_{0} üçün 0 <= f(n) <= cg(n)}
