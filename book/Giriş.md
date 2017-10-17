@@ -184,10 +184,71 @@ Bu o deməkdir ki, n-nin böyük qiymətləri üçün, `f(n)`-nin yuxarı həddi
 Məsələn, əgər ![](http://mathurl.com/ybe97pyc.png)
 verilmiş alqoritmdirsə, o zaman `n^4`, `g(n)`-dir. Bu o deməkdir ki, `g(n)`, `n`-nin böyük qiymətlərində maksimum böyümə sürəti(dərəcəsi) verir.
 
-O-notasiya haqqında biraz daha danışaq.O-notasiya O(g(n)) = {f(n): bütün n >= ![](http://mathurl.com/y958kh7d.png) üçün müsbət c və ![](http://mathurl.com/y958kh7d.png) üçün 0 <= f(n) <= cg(n) doğrudur}.
+O-notasiya haqqında biraz daha danışaq.
+O-notasiya `O(g(n)) = {f(n)`: bütün n >= ![](http://mathurl.com/y958kh7d.png) üçün müsbət c və ![](http://mathurl.com/y958kh7d.png) üçün `0 <= f(n) <= cg(n)` doğrudur}.
 `g(n)` burada, `f(n)` üçün asimptotik üst sərhəddir.
 
 Bizim burdakı istəyimiz odur ki, elə bir g(n)-nin ən kiçik artım sürətini verək ki, o, verilmiş alqoritmin f(n) artım sürətinə böyük bərabər olsun.
 
 Ümumən isə, biz n-dən kiçik dəyərlərə əhəmiyyət verimirik. Bu o deməkdir ki, n-nin kiçik dəyərindən aşağı artım sürəti bizə gərək deyil. Qrafikdə, verilmiş alqoritm üçün artım sürətinə ![](http://mathurl.com/y958kh7d.png) dəyərindən diqqət yetirməliyik. ![](http://mathurl.com/y958kh7d.png)-dən aşağı dəyərlərdə artım sürəti fərqlilik təşkil edə bilər.
 ![](http://mathurl.com/y958kh7d.png) bu funksiya başlanğıc nöqtə hesab olunur(threshold).
+
+
+## 1.15 Böyük-O(Big-O) vizualizsiyası
+`O(g(n))`, artım(böyümə) sürəti `g(n)`-dən kiçik və yaxud bərabər funksiyaların toplusudur.
+Məsələn, O(n^2)-yə O(1), O(n), O(nlogn) və.s daxildir.
+
+> Qeyd: Alqoritmləri yalnız, n-nin ən böyük qiymələri üçün analiz edin. Yəni yuxarılarda qeyd etdiyimiz kimi, ![](http://mathurl.com/y958kh7d.png)-dan aşağı üçün artım sürəti(dərəcəsi) bizə maraqlı deyil.
+
+**Böyük-O nümunələri**
+
+**Nümunə-1**:
+![](http://mathurl.com/ybu957yg.png) üçün yuxarı həddi müəyyənləşdirin.
+
+*Həlli*:
+
+Bütün ![](http://mathurl.com/y9dkez5x.png) üçün, ![](http://mathurl.com/ycx63yg9.png) doğrudur.
+
+c = 4 və ![](http://mathurl.com/y958kh7d.png) = 8 olmaqla, ![](http://mathurl.com/y7chswql.png)
+
+**Nümunə-2**: ![](http://mathurl.com/y8c5rx9z.png) üçün yuxarı həddi tapın.
+
+*Həlli*:
+
+Bütün ![](http://mathurl.com/y7wjnpbq.png) üçün ![](http://mathurl.com/ya9dlyru.png) doğrudur.
+
+c = 2 və ![](http://mathurl.com/y958kh7d.png) = 1 olmaqla, ![](http://mathurl.com/ybks5n6z.png)
+
+**Nümunə-3**: ![](http://mathurl.com/y9m9qkqv.png) üçün yuxarı həddi tapın.
+
+*Həlli*:
+
+Bütün ![](http://mathurl.com/y8foayun.png) üçün, ![](http://mathurl.com/ycgp9mm5.png) doğrudur.
+
+c = 2 və ![](http://mathurl.com/y958kh7d.png) = 11 olmaqla, ![](http://mathurl.com/yaayk44u.png)
+
+**Nümunə-4**: ![](http://mathurl.com/ydab64kf.png) üçün yuxarı həddi tapın.
+
+*Həlli*:
+
+Bütün ![](http://mathurl.com/y7wjnpbq.png) üçün ![](http://mathurl.com/y9dtcwa6.png) doğrudur.
+
+c = 2 və ![](http://mathurl.com/y958kh7d.png) = 1 olmaqla, ![](http://mathurl.com/y8l6xh7k.png)
+
+**Nümunə-5**: ![](http://mathurl.com/yauarbnw.png) üçün yuxarı həddi tapın.
+
+*Həlli*:
+
+Bütün ![](http://mathurl.com/y7wjnpbq.png) üçün ![](http://mathurl.com/yb86c3ep.png) doğrudur.
+
+c = 1 və ![](http://mathurl.com/y958kh7d.png) = 1 olmaqla, ![](http://mathurl.com/y7ym3vc3.png)
+
+**Nümunə-6**: ![](http://mathurl.com/ya38vsp6.png) üçün yuxarı həddi tapın.
+
+*Həlli*:
+
+Bütün ![](http://mathurl.com/y7wjnpbq.png) üçün ![](http://mathurl.com/y7dlvlzw.png) doğrudur.
+
+c = 1 və ![](http://mathurl.com/y958kh7d.png) = 1 olmaqla, ![](http://mathurl.com/yalorhyb.png)
+
+> Qeyd: ![](http://mathurl.com/y958kh7d.png) və c üçün unikallıq qorunmur. Yəni asimptotik hədlərin sübutu zamanı bir funksiya üçün müxtəlif ![](http://mathurl.com/y958kh7d.png) və c ola bilər.
