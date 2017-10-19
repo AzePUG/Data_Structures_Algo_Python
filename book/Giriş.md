@@ -263,7 +263,7 @@ Bu səbəbdən, biz alqoritmik analizin adına asimptotik analiz deyirik.
 ## 1.17 Asimptotik analiz üçün metodiki məsləhətlər
 Alqoritmin işləmə vaxtını təyin etmək üçün bəzi ümumi qaydalar var. Onlara nəzər yetirməkdə fayda var.
 
-######*1)*  Döngülər(loops):
+**1)  Döngülər(loops):**
 Bir döngünün icra olunma vaxtı, döngü daxilində icra olunan əmrlərin ümumi icra vaxtı ilə, döngünün təkrarlanma sayının(number of iterations) hasilinə bərabərdir.
 
 ```
@@ -273,7 +273,7 @@ for i in range(0,n):
 ```
 `Ümumi icra vaxtı = sabit c x n = c n = O(n)`
 
-######*2)* İç-içə döngülər:
+**2) İç-içə döngülər:**
 İç-içə döngüləri içdən çölə olmaqla analiz etmək lazımdır. Ümumi icra vaxtı, bütün döngülərin həcminin hasilinə bərabərdir.
 Aşağıya diqqət yetirək.
 
@@ -287,7 +287,7 @@ for i in range(0, n):
 
 `Ümumi icra olunma vaxtı = c x n x n =` ![](http://mathurl.com/y8j9nvj2.png) = ![](http://mathurl.com/zqt855w.png)
 
-######*3)* Ardıcıl əmrlər:
+**3) Ardıcıl əmrlər:**
 Ardıcıl icra olunan əməliyyatlar üçün, ümumi vaxtı hesablamaq üçün hər bir əməliyyatın vaxt mürəkkəbliyini(time complexity) toplamaq lazımdır.
 
 ```
@@ -307,7 +307,7 @@ for i in range(0, n):
 
 Nəyə görə ![](http://mathurl.com/zqt855w.png)??? Əgər xatırlayırsınızsa, bizə n-nin ən böyük artım tempi verən dəyəri lazımdır. Burda isə n^2 ən böyüyüdür.
 
-######*4)* İf-then-else əmrləri(statements):
+**4) İf-then-else əmrləri(statements):**
 Elə təsəvvür edək ki, bizim if-elif-else şərtlərimiz olduqca uzundur. Bu zaman bizim kodumuz üçün ən pis və ən yaxşı halı tapmaq haqqında fikriniz nə olar?
 Ən yaxşı hal o olardı ki, elə birinci if-də, şərt ödənsin və if daxilində sabit vaxt(constant time) gedəcək əmr icra olunsun, bu zaman deyərik ki, `Ümumi vaxt = O(1)`
 
@@ -324,7 +324,7 @@ Bu zaman `Ümumi icra olunma vaxtı = `![](http://mathurl.com/ya2xehoc.png)
 Daha sadə dildə desək, bizim yuxarıdakı kodun icra vaxtı, döngünün icra vaxtına bərabərdir.
 
 
-#####*5* Loqarifmik mürəkkəblik(çətinlik)
+**5 Loqarifmik mürəkkəblik(çətinlik)**
 Əgər, problemin həcmini müəyyən fraksiya(hissə, kəsir) qədər azaltmaq üçün bizə sabit vaxt lazım olursa, o zaman deyirik ki, alqoritm `O(logn)`-dir.
 
 Izah üçün aşağıdakı kod parçasına baxaq:
