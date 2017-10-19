@@ -252,3 +252,118 @@ Bütün ![](http://mathurl.com/y7wjnpbq.png) üçün ![](http://mathurl.com/y7dl
 c = 1 və ![](http://mathurl.com/y958kh7d.png) = 1 olmaqla, ![](http://mathurl.com/yalorhyb.png)
 
 > Qeyd: ![](http://mathurl.com/y958kh7d.png) və c üçün unikallıq qorunmur. Yəni asimptotik hədlərin sübutu zamanı bir funksiya üçün müxtəlif ![](http://mathurl.com/y958kh7d.png) və c ola bilər.
+
+
+## 1.16 Nəyə görə analizin adı Asimptotik Analizdir?
+Yuxarıdakı müzakirələrdən də aydın olur ki, bütün hallarda(ən yaxşı, orta, ən pis) verilmiş `f(n)` funksiyası üçün digər `g(n)` funksiyasını aşkarlamağa çalışırıq. `g(n)` özü-özlüyündə isə, `n`-nin böyük dəyərlərində `f(n)`-ə yaxınlaşır.
+Bu o deməkdir ki, `g(n)`, `n`-nin böyük dəyərlərində `f(n)`-ə yaxınlaşan bir əyridir.
+Riyaziyyatda, belə əyriyə asimptotik əyri deyilir. Başqa cür desək, `g(n)`, `f(n)` üçün asimptotik əyridir.
+Bu səbəbdən, biz alqoritmik analizin adına asimptotik analiz deyirik.
+
+## 1.17 Asimptotik analiz üçün metodiki məsləhətlər
+Alqoritmin işləmə vaxtını təyin etmək üçün bəzi ümumi qaydalar var. Onlara nəzər yetirməkdə fayda var.
+
+######*1)*  Döngülər(loops):
+Bir döngünün icra olunma vaxtı, döngü daxilində icra olunan əmrlərin ümumi icra vaxtı ilə, döngünün təkrarlanma sayının(number of iterations) hasilinə bərabərdir.
+
+```
+# n qədər çağrılır
+for i in range(0,n):
+    print("Hazırkı rəqəm: {}".format(i)) # Sabit vaxt
+```
+`Ümumi icra vaxtı = sabit c x n = c n = O(n)`
+
+######*2)* İç-içə döngülər:
+İç-içə döngüləri içdən çölə olmaqla analiz etmək lazımdır. Ümumi icra vaxtı, bütün döngülərin həcminin hasilinə bərabərdir.
+Aşağıya diqqət yetirək.
+
+```
+# Çöldəki döngü n qədər çağrılır
+for i in range(0, n):
+    # İçdəki döngü n qədər çağrılır
+    for j in range(0, n):
+        print("i-nin qiyməti {} və j-nin qiyməti".format(i, j)) # Sabit vaxt
+```
+
+`Ümumi icra olunma vaxtı = c x n x n =` ![](http://mathurl.com/y8j9nvj2.png) = ![](http://mathurl.com/zqt855w.png)
+
+######*3)* Ardıcıl əmrlər:
+Ardıcıl icra olunan əməliyyatlar üçün, ümumi vaxtı hesablamaq üçün hər bir əməliyyatın vaxt mürəkkəbliyini(time complexity) toplamaq lazımdır.
+
+```
+n = 100
+# n qədər çağrılır, icra olunur
+for i in range(0,n):
+    print("Hazırkı rəqəm: {}".format(i)) # Sabit vaxt
+
+# Çöldəki döngü n qədər çağrılır
+for i in range(0, n):
+    # İçdəki döngü n qədər çağrılır
+    for j in range(0, n):
+        print("i-nin qiyməti {} və j-nin qiyməti".format(i, j)) # Sabit vaxt
+```
+
+`Ümumi icra olunma vaxtı = `![](http://mathurl.com/y88e2zgd.png)
+
+Nəyə görə ![](http://mathurl.com/zqt855w.png)??? Əgər xatırlayırsınızsa, bizə n-nin ən böyük artım tempi verən dəyəri lazımdır. Burda isə n^2 ən böyüyüdür.
+
+######*4)* İf-then-else əmrləri(statements):
+Elə təsəvvür edək ki, bizim if-elif-else şərtlərimiz olduqca uzundur. Bu zaman bizim kodumuz üçün ən pis və ən yaxşı halı tapmaq haqqında fikriniz nə olar?
+Ən yaxşı hal o olardı ki, elə birinci if-də, şərt ödənsin və if daxilində sabit vaxt(constant time) gedəcək əmr icra olunsun, bu zaman deyərik ki, `Ümumi vaxt = O(1)`
+
+Bəs ən pis hal? Sözsüz ki, else-ə qədər bütün if-elif-lərdən keçirik və else-in daxilində də hər hansı mürəkkəb döngü görürük:
+
+```
+if n == 1:  # Sabit vaxt
+    print(n)
+else:
+    for i in range(0, n): # n qədər icra
+        print("Hazırkı rəqəm: {}".format(i)) # Sabit vaxt
+```
+Bu zaman `Ümumi icra olunma vaxtı = `![](http://mathurl.com/ya2xehoc.png)
+Daha sadə dildə desək, bizim yuxarıdakı kodun icra vaxtı, döngünün icra vaxtına bərabərdir.
+
+
+######*5* [Loqarifmik mürəkkəblik(çətinlik)]()
+Əgər, problemin həcmini müəyyən fraksiya(hissə, kəsir) qədər azaltmaq üçün bizə sabit vaxt lazım olursa, o zaman deyirik ki, alqoritm `O(logn)`-dir.
+
+Izah üçün aşağıdakı kod parçasına baxaq:
+
+```
+def logarithms(n):
+    i = 1
+    while i <= n:
+        i = i * 2
+        print(i)
+
+logarithms(100)  
+```
+
+Diqqətlə nəzər yetirsək, görərik ki, `i`-nin qiyməti hər dəfə 2 dəfə artır. Əvvəlcə, `i = 1` idi, növbəti addımda `i = 2`, ardıcıl olaraq, 4, 8, 16 və.s.
+Gəlin elə təsəvvür edək ki, funksiya daxilindəki döngü `k` dəfə icra olunur. `k`-cı addımda ![](http://mathurl.com/ycwumz2r.png) olur, (k + 1)-ci addım isə döngüdən çıxır.
+
+Hər iki tərəfdən loqarifmanı hesablamağa çalışsaq:
+
+![](http://mathurl.com/ycoaa3tn.png)
+
+![](http://mathurl.com/y75ndmnz.png) `# bazanın 2 olduğunu qəbul edirik`
+
+Dolayısı ilə, `Ümumi vaxt = ` ![](http://mathurl.com/yczorlbu.png)
+
+Eyni hal, ardıcıllığı artırmaq yox, azaltmaq üçün də doğrudur.
+
+```
+def logarithms(n):
+    i = n
+    while i >= 1:
+        i = i // 2
+        print(i)
+
+logarithms(100)  
+```
+
+Digər misal isə, ikili axtarış(binary search) alqoritmi ola bilər(n səhifəsi olan lüğətdə sözü tapmaq):
+* Verilmiş lüğətin mərkəzinə(ortasına) baxırıq, axtardığımız söz ordadırmı? Deyilsə, ortadan, sağa ya sola ilərləməliyik?
+* Deyək ki, sağa. Bu zaman artıq digəri yarısı bizə maraqsızdır. Bizim üçün sağ tərəf yeni bütöv lüğətdir.
+* Yeni sağ tərəfin də ortasına baxırıq, axtardığımız söz ordadır mı? Əgər deyilsə, o zaman bu sağın, soluna ya sağına keçməliyik?
+* Yuxarıdakı prosesi, sözü tapana qədər davam etdirin.
