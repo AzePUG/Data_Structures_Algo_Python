@@ -324,7 +324,7 @@ Bu zaman `Ümumi icra olunma vaxtı = `![](http://mathurl.com/ya2xehoc.png)
 Daha sadə dildə desək, bizim yuxarıdakı kodun icra vaxtı, döngünün icra vaxtına bərabərdir.
 
 
-######*5* [Loqarifmik mürəkkəblik(çətinlik)]()
+######*5* <a name="Loqarifmik mürəkkəblik(çətinlik)">Loqarifmik mürəkkəblik(çətinlik)</a>
 Əgər, problemin həcmini müəyyən fraksiya(hissə, kəsir) qədər azaltmaq üçün bizə sabit vaxt lazım olursa, o zaman deyirik ki, alqoritm `O(logn)`-dir.
 
 Izah üçün aşağıdakı kod parçasına baxaq:
