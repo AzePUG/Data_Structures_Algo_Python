@@ -105,10 +105,69 @@ class SinglyLinkedList:
         else:
             # Yuxarıda dediyimiz kimi 2 node haqqında məlumatı saxlamalıyıq
             current_node = self.head
-            previous_node = self.head
+            previous_node = None
 
             while current_node.get_next_node() is not None:
                 previous_node = current_node
                 current_node = current_node.get_next_node()
 
-            previous_node.set_next_node(None)            
+            previous_node.set_next_node(None)
+
+    def delete_from_list_by_data(self, data):
+        # Burada, current, tapılan node-u, data-ya əsasən silirik.
+        current_node = self.head
+        previous_node = None
+        found = False
+
+        # current_node None olsa dayan, found True olsa dayan
+        while current_node and found is False:
+            if current_node.get_data() == data:
+                found = True
+            else:
+                previous_node = current_node
+                current_node = current_node.get_next_node()
+
+        if current_node is None:
+            # Fərqlilik məqsədilə Exception-dan istifadə edirik
+            raise ValueError("Data listdə tapılmadı...")
+        if previous_node is None:
+            # Bu o deməkdir ki, axtarılan data elə 1ci(head) node-da tapılıb.
+            # Bu zaman head-i sadəcə növbəti node-a işarəliyirik.
+            # Əslində bu hal, list-in əvvəlindən node silməyə bərabərdir.
+            self.head = current_node.get_next_node()
+        else:
+            # Əvvəlki node-un next pointerini, hal-hazırkı(current) node-un next pointer-inə yönləndiririk.
+            # Beləcə current node-un özünü sanki itiririk, silirik.
+            previous_node.set_next_node(current_node.get_next_node())
+
+    def delete_at_position(self, pos):
+        count = 0
+        current_node = self.head
+        previous_node = self.head
+
+        if pos > self.list_size() or pos < 0:
+            print("Pozisiya səhvdir, None qaytarıram..")
+            return None
+        elif pos == 0:
+            # Bu o deməkdir ki, listin əvvəlindən node silirik.
+            self.delete_first_node()
+        elif pos == self.list_size():
+            # Bu o deməkdir ki, listin sonundan node silirik.
+            self.delete_last_node()
+        else:
+            # Əgər listin axırına çatmamışıqsa və count verilmiş pozisiyadan kiçikdirsə, davam elə
+            while (current_node.get_next_node() is not None) or count < pos:
+                    count = count + 1
+                    if count == pos:
+                        # Əgər verilmiş pozisiyaya çatdıqsa, əvvəlki node-un next pointer-ini, indiki node-un next pointerinə yönləndiririk.
+                        previous_node.set_next_node(current_node.get_next_node())
+                        return
+                    else:
+                        # Əgər hələ pozisiyaya çatmamışıqsa, o zaman davam edirik.
+                        previous_node = current_node
+                        current_node = current_node.get_next_node()
+
+
+    def clear(self):
+        # Head-i NULL edirik
+        self.head = None
