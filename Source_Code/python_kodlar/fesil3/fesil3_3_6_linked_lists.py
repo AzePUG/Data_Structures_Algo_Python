@@ -57,3 +57,32 @@ class SinglyLinkedList:
             current = current.get_next_node()
 
         current.set_next_node(new_node)
+
+    def insert_at_pos(self, pos, data):
+        # Əgər düzgün pozisiya verilmirsə, None qaytar
+        if pos > self.list_size() or pos < 0:
+            print("Pozisiya səhvdir, None qaytarıram..")
+            return None
+        else:
+            # Əgər pozisiya 0-dırsa, bu o deməkdir ki, biz listin əvvəlinə daxil etmək istəyirik
+            if pos == 0:
+                print("Əvvələ daxil etmə...")
+                self.insert_at_beginning(data)
+            # Əgər pozisiya list-in node sayına bərabərdirsə, bu o deməkdir ki, node-u listin sonuna daxil etmək lazımdır
+            elif pos == self.list_size():
+                print("Ən sona daxil etmə...")
+                self.insert_at_end(data)
+            else:
+                print("Verilmiş pozisiyaya daxil etmə...")
+                new_node = Node()
+                new_node.set_data(data)
+                count = 1
+                current = self.head
+                # Verilmiş pozisiyadan bir əvvəlki node-u tapırıq
+                while count < (pos - 1):
+                    count += 1
+                    current = current.get_next_node()
+                # Yeni node-un next pointerini, verilmiş pozisiyadan bir əvvəlki node-un point etdiyi node-a yönləndiririk.
+                new_node.set_next_node(current.get_next_node())
+                # Verilmiş pozisiyadan bir əvvəlki node-un next pointer-ini isə bizim daxil etmək istədiyimiz node-a yönləndiririk.
+                current.set_next_node(new_node)
