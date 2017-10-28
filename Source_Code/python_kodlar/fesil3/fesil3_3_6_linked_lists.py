@@ -97,4 +97,18 @@ class SinglyLinkedList:
             # Bununla da faktiki olaraq, əvvəlki head-i arxada qoyuruq.
             self.head = self.head.get_next_node()
             # Müvəqqəti node-u silirik.
-            del(temp)            
+            del(temp)
+
+    def delete_last_node(self):
+        if self.list_size() == 0:
+            print("List boşdur...")
+        else:
+            # Yuxarıda dediyimiz kimi 2 node haqqında məlumatı saxlamalıyıq
+            current_node = self.head
+            previous_node = self.head
+
+            while current_node.get_next_node() is not None:
+                previous_node = current_node
+                current_node = current_node.get_next_node()
+
+            previous_node.set_next_node(None)            
