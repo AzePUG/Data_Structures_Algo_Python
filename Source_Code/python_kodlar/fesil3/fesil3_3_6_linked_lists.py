@@ -86,3 +86,15 @@ class SinglyLinkedList:
                 new_node.set_next_node(current.get_next_node())
                 # Verilmiş pozisiyadan bir əvvəlki node-un next pointer-ini isə bizim daxil etmək istədiyimiz node-a yönləndiririk.
                 current.set_next_node(new_node)
+
+    def delete_first_node(self):
+        if self.list_size() == 0:
+            print("List boşdur...")
+        else:
+            # Müvəqqəti node
+            temp = self.head
+            # Head node-u əvvəlki head-dən sonrakı node-a mənimsədirik.
+            # Bununla da faktiki olaraq, əvvəlki head-i arxada qoyuruq.
+            self.head = self.head.get_next_node()
+            # Müvəqqəti node-u silirik.
+            del(temp)            
