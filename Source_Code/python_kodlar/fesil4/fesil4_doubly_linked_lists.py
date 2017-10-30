@@ -1,20 +1,3 @@
-# İkitərəfli Əlaqəli listlər(doubly linked lists)
-
-Bu fəsildə Əlaqəli listlərin bir növü olan İkitərəfli Əlaqəli listlərdən danışacıq.
-
-İkitərəfli əlaqəli listin əsas üstünlüyü odur ki, biz verilmiş node-la həm arxaya həm önə hərəkət edə bilirik.
-Adından da göründüyü kimi bu listin node-u bizə ikitərəfli hərəkət bəxş edir.
-
-Ikitərəfli əlaqəli listin zəif cəhətləri:
-* Hər node əlavə bir pointeri saxlamaq üçün də yaddaş tələb edir.
-* Daxil etmə və silmə əməliyyatları əlavə pointer olduğu üçün daha çox vaxt aparır.
-
-Birtərəfli əlaqəli listdə olduğu kimi, burda da gəlin istifadəçi tipini təyin edək(user defined type).
-Aşağıdakı kod, ikitərəfli əlaqəli list üçün tip deklarasiyasıdır:
-
-> Bütün kodlara baxmaq üçün keçid: [fesil4_doubly_linked_lists.py](../Source_Code/python_kodlar/fesil4/fesil4_doubly_linked_lists.py)
-
-```
 class Node:
     # Konstruktor
     # Əgər istifadəçi tərəfindən heçnə verilmirsə, bu zaman None(NULL) olaraq inisializasiya edirik
@@ -54,4 +37,3 @@ class Node:
     # node-dan əvvəlki varsa, True
     def has_prev(self):
         return self.prev_node is not None
-```
