@@ -37,3 +37,21 @@ class Node:
     # node-dan əvvəlki varsa, True
     def has_prev(self):
         return self.prev_node is not None
+
+class DoublyLinkedList:
+
+    def __init__(self, head=None, tail=None):
+        self.head = head
+        self.tail = tail
+
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.set_prev_node(None)
+            new_node.set_next_node(self.head)
+            self.head.set_prev_node(new_node)
+            self.head = new_node
