@@ -31,7 +31,7 @@ class Node:
         self.prev_node = prev_node
 
     # node-un əvvəlki(previous) field-ini almaq üçün metod
-    def get_prev_node(self, prev_node):
+    def get_prev_node(self):
         return self.prev_node
 
     # node-dan əvvəlki varsa, True
@@ -55,3 +55,23 @@ class DoublyLinkedList:
             new_node.set_next_node(self.head)
             self.head.set_prev_node(new_node)
             self.head = new_node
+
+    def insert_at_end(self, data):
+        new_node = Node(data, next_node=None, prev_node=None)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            current = self.head
+            # Sonuncu node-u tapırıq
+            while current.get_next_node() is not None:
+                current = current.get_next_node()
+            # Hal-hazırkı sonuncu node üçün next pointeri yeni node edirik.    
+            current.set_next_node(new_node)
+            # Yeni node-un əvvəlki pointerini hal-hazırkı(while-da tapılan) node edirik.
+            new_node.set_prev_node(current)
+            # Yeni node-un next pointerini NULL-a yönləndiririk.
+            new_node.set_next_node(None)
+
+            self.tail = new_node
