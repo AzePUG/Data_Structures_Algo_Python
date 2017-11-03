@@ -1,1 +1,1 @@
-#Data Strukturları və Alqoritmlər
+# Data Strukturları və Alqoritmlər
