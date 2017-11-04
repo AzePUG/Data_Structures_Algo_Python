@@ -67,11 +67,50 @@ class DoublyLinkedList:
             # Sonuncu node-u tapırıq
             while current.get_next_node() is not None:
                 current = current.get_next_node()
-            # Hal-hazırkı sonuncu node üçün next pointeri yeni node edirik.    
+            # Hal-hazırkı sonuncu node üçün next pointeri yeni node edirik.
             current.set_next_node(new_node)
             # Yeni node-un əvvəlki pointerini hal-hazırkı(while-da tapılan) node edirik.
             new_node.set_prev_node(current)
             # Yeni node-un next pointerini NULL-a yönləndiririk.
             new_node.set_next_node(None)
-
             self.tail = new_node
+
+    def list_size(self):
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.get_next_node()
+        return count
+
+    def insert_at_pos(self, pos, data):
+        if pos > self.list_size() or pos < 0:
+            print("Pozisiya səhvdir, None qaytarıram..")
+            return None
+        else:
+            # Əgər pozisiya 0 verilibsə və yaxud head node None-dırsa, əvvələ daxil et.
+            if pos == 0 or self.head is None:
+                print("Əvvələ daxil etmə...")
+                self.insert_at_beginning(data)
+            elif pos == self.list_size():
+                print("Ən sona daxil etmə...")
+                self.insert_at_end(data)
+            elif pos > 0:
+                print("Verilmiş pozisiyaya daxil etmə...")
+                new_node = Node()
+                new_node.set_data(data)
+
+                count = 0
+                current = self.head
+                # Verilmiş pozisiyadan bir əvvəlki node-u tapırıq, yəni pozisional node-u
+                while count < (pos - 1):
+                    count += 1
+                    current = current.get_next_node()
+                # Yeni node-un next pointerini, pozisional node-dan növbəti node-a yönləndiririk.
+                new_node.set_next_node(current.get_next_node())
+                # Yeni node-un əvvəlki pointerini, hal-hazırkı node-a yönləndiririk.
+                new_node.set_prev_node(current)
+                # Pozisional node-dan(hal-hazırkı node) sonrakı node-un previous pointerini new_node-a yönləndiririk.
+                current.get_next_node().set_prev_node(new_node)
+                # Pozisional node-un next pointerini new_node-a yönləndiririk.
+                current.set_next_node(new_node)
