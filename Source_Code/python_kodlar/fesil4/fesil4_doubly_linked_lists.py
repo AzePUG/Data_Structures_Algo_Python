@@ -104,8 +104,8 @@ class DoublyLinkedList:
                 current = self.head
                 # Verilmiş pozisiyadan bir əvvəlki node-u tapırıq, yəni pozisional node-u
                 while count < (pos - 1):
-                    count += 1
                     current = current.get_next_node()
+                    count += 1
                 # Yeni node-un next pointerini, pozisional node-dan növbəti node-a yönləndiririk.
                 new_node.set_next_node(current.get_next_node())
                 # Yeni node-un əvvəlki pointerini, hal-hazırkı node-a yönləndiririk.
@@ -114,6 +114,7 @@ class DoublyLinkedList:
                 current.get_next_node().set_prev_node(new_node)
                 # Pozisional node-un next pointerini new_node-a yönləndiririk.
                 current.set_next_node(new_node)
+
 
     def delete_first_node(self):
         if self.list_size() == 0:
@@ -128,3 +129,34 @@ class DoublyLinkedList:
             self.head.set_prev_node(None)
             # Müvəqqəti node-u silirik.
             del(temp)
+
+    def delete_last_node(self):
+        if self.list_size() == 0:
+            print("List boşdur...")
+        else:
+            # Head node-dan başlayırıq
+            current_node = self.head
+            # Sonuncu  node-u aşkarlayırıq
+            while current_node.get_next_node() is not None:
+                current_node = current_node.get_next_node()
+            # Sonuncu node-dan bir əvvəlki node-u tapırıq
+            previous_node = current_node.get_prev_node()
+            # Bir əvvəlki node-un növbəti
+            previous_node.set_next_node(None)
+            # current node-u silirik
+            del(current_node)
+
+    def traverse_and_print(self):
+        if self.list_size() == 0:
+            print("List boşdur...")
+        elif self.list_size() == 1:
+            print(self.head.data)
+        else:
+            # Head node-dan başlayırıq
+            current_node = self.head
+            print(current_node.get_data())
+            while True:
+                current_node = current_node.get_next_node()
+                if current_node is None:
+                    break
+                print(current_node.get_data())
