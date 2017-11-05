@@ -114,3 +114,17 @@ class DoublyLinkedList:
                 current.get_next_node().set_prev_node(new_node)
                 # Pozisional node-un next pointerini new_node-a yönləndiririk.
                 current.set_next_node(new_node)
+
+    def delete_first_node(self):
+        if self.list_size() == 0:
+            print("List boşdur...")
+        else:
+            # Müvəqqəti node
+            temp = self.head
+            # Head node-u əvvəlki head-dən sonrakı node-a mənimsədirik.
+            # Bununla da faktiki olaraq, əvvəlki head-i arxada qoyuruq.
+            self.head = self.head.get_next_node()
+            # Yeni head və yaxud yeni node-umuzun sol(previous) node-a pointeri None edirik.
+            self.head.set_prev_node(None)
+            # Müvəqqəti node-u silirik.
+            del(temp)
