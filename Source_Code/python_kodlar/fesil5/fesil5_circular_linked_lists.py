@@ -24,14 +24,14 @@ class Node:
     def has_next(self):
         return self.next_node is not None
 
+
 class CircularLinkedList:
     def __init__(self, head=None):
         self.head = head
 
     def circular_list_length(self):
         current_node = self.head
-
-        if current_node == None:
+        if current_node is None:
             return 0
 
         count = 1
@@ -45,12 +45,39 @@ class CircularLinkedList:
 
     def print_data_circular_list(self):
         current_node = self.head
-
-        if current_node == None:
+        if current_node is None:
             return 0
 
-        print(current_node.get_data())
         current_node = current_node.get_next_node()
+        print(current_node.get_data())
         while current_node != self.head:
             current_node = current_node.get_next_node()
             print(current_node.get_data())
+
+    def insert_at_end(self, data):
+        current_node = self.head
+        new_node = Node()
+        new_node.set_data(data)
+
+        if self.head is None:
+            self.head = new_node
+            new_node.set_next_node(self.head)
+        else:
+            current_node = current_node.get_next_node()
+            while current_node.get_next_node() != self.head:
+                current_node.get_next_node()
+            # Yeni node-u öz-özünə point edirik.
+            new_node.set_next_node(new_node)
+            # Yeni node-u head node-a yönləndiririk.
+            new_node.set_next_node(self.head)
+            # Hal-hazırkı(faktiki olaraq əvvəlki) node-u isə yeni node-a yönləndiririk.
+            current_node.set_next_node(new_node)
+
+
+if __name__ == '__main__':
+    obj = CircularLinkedList()
+    obj.insert_at_end(44)
+    obj.insert_at_end(3)
+    obj.insert_at_end(99)
+    print("Printing list length -> {}".format(obj.circular_list_length()))
+    obj.print_data_circular_list()
