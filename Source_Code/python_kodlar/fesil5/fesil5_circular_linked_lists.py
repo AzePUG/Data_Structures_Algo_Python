@@ -95,6 +95,23 @@ class CircularLinkedList:
             # current_node.set_next_node(new_node)
             current_node.set_next_node(self.head)
 
+    def delete_from_end(self):
+        # Müvəqqəti dəyişən
+        temp = self.head
+        current_node = self.head
+
+        if self.head is None:
+            print("List boşdur...")
+            return
+        else:
+            while current_node.get_next_node() != self.head:
+                temp = current_node
+                current_node = current_node.get_next_node()
+            # Müvəqqəti node, əslində sondan bir əvvəli node-dur.
+            # Burda bu node-un növbəti pointer-ini faktiki olaraq head-ə yönləndiririk.
+            temp.set_next_node(self.head)
+            return
+
 
 if __name__ == '__main__':
     obj = CircularLinkedList()
@@ -103,5 +120,8 @@ if __name__ == '__main__':
     obj.insert_at_end(99)
     obj.insert_at_beginning(101)
     obj.insert_at_beginning(6)
+    print("Printing list length -> {}".format(obj.circular_list_length()))
+    obj.print_data_circular_list()
+    obj.delete_from_end()
     print("Printing list length -> {}".format(obj.circular_list_length()))
     obj.print_data_circular_list()
