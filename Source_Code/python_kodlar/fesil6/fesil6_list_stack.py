@@ -20,7 +20,13 @@ class ArrayStack:
         self.limit = limit
 
     def is_empty(self):
-        return len(self.stk) <= 0
+        # Əgər python listin boşdursa, deməli stack boşdur bu zaman True qaytarırıq.
+        return self.stk == []
+
+    def is_full(self):
+        # Əgər python listin uzunluğu verilmiş limitə bərabərdirsə bu zaman deyə bilərik ki, stack doludur.
+        # Əgər stack doludursa, True qaytarırıq.
+        return len(self.stk) == self.limit
 
     def push(self, item):
         if len(self.stk) >= self.limit:
@@ -30,14 +36,14 @@ class ArrayStack:
             print("Stack after push -> {}".format(self.stk))
 
     def pop(self):
-        if len(self.stk) <= 0:
+        if len(self.stk) == 0:
             raise StackUnderFlow("Stack underflow aşkarlandı!")
         else:
             # Python list-də built-in olan pop() metodunu çağırırıq.
             return self.stk.pop()
 
     def peek(self):
-        if len(self.stk) <= 0:
+        if len(self.stk) == 0:
             raise StackUnderFlow("Stack underflow aşkarlandı!")
         else:
             # List slicing
@@ -45,6 +51,10 @@ class ArrayStack:
 
     def size(self):
         return len(self.stk)
+
+    def delete_stack(self):
+        # Stack-i silmək, faktiki olaraq python listi sıfırlamaqla əldə oluna bilər.
+        self.stk = []
 
 
 # if __name__ == "__main__":
