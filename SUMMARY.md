@@ -9,3 +9,7 @@
 * [Birtərəfli Əlaqəli listlər-singly linked lists](./book/3.Birtərəfli_Əlaqəli_listlər_singly_linked_lists.md)
 
 * [İkitərəfli Əlaqəli listlər-doubly linked lists](./book/4.İkitərəfli_Əlaqəli_listlər_doubly_linked_lists.md)
+
+* [Dövri Əlaqəli listlər-circular linked lists](./book/5.Dövri_Əlaqəli_listlər_circular_linked_lists.md)
+
+* [Yığın-stack](./book/6.Stack_Yığın.md)
