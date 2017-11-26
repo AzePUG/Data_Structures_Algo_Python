@@ -13,3 +13,5 @@
 * [Dövri Əlaqəli listlər-circular linked lists](./book/5.Dövri_Əlaqəli_listlər_circular_linked_lists.md)
 
 * [Yığın-stack](./book/6.Stack_Yığın.md)
+
+* [Növbələr-queues](./book/7.Növbələr_Queues.md)
