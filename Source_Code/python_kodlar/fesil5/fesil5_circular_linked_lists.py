@@ -102,8 +102,10 @@ class CircularLinkedList:
 
         if self.head is None:
             print("List boşdur...")
-            return
         else:
+            if current_node.get_next_node() == self.head:
+                self.head = None
+                return
             while current_node.get_next_node() != self.head:
                 temp = current_node
                 current_node = current_node.get_next_node()
@@ -118,6 +120,9 @@ class CircularLinkedList:
         if self.head is None:
             print("List boşdur...")
         else:
+            if current_node.get_next_node() == self.head:
+                self.head = None
+                return
             # Sonuncu node-un tapılması
             while current_node.get_next_node() != self.head:
                 current_node = current_node.get_next_node()
@@ -125,20 +130,3 @@ class CircularLinkedList:
             current_node.set_next_node(self.head.get_next_node())
             # Head node-u sürüşdürürük
             self.head = self.head.get_next_node()
-
-
-if __name__ == '__main__':
-    obj = CircularLinkedList()
-    obj.insert_at_end(44)
-    obj.insert_at_end(3)
-    obj.insert_at_end(99)
-    obj.insert_at_beginning(101)
-    obj.insert_at_beginning(6)
-    print("Printing list length -> {}".format(obj.circular_list_length()))
-    obj.print_data_circular_list()
-    obj.delete_from_end()
-    print("Printing list length -> {}".format(obj.circular_list_length()))
-    obj.print_data_circular_list()
-    obj.delete_from_beginning()
-    print("Printing list length -> {}".format(obj.circular_list_length()))
-    obj.print_data_circular_list()
