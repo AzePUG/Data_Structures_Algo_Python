@@ -15,3 +15,5 @@
 * [Yığın-stack](./book/6.Stack_Yığın.md)
 
 * [Növbələr-queues](./book/7.Növbələr_Queues.md)
+
+* [Ağaclar-trees](./book/8.Ağaclar_Trees.md)
