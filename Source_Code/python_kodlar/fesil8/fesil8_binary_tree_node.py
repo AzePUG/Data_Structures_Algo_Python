@@ -1,4 +1,5 @@
-# DİQQƏT! İşlək olmayan kod nümunəsi!
+# Kod mənbəsi: https://gist.github.com/thinkphp/1450738
+# Lakin, iterativ üsullar və bəzi dəyişikliklər edildi.
 
 class Node:
     def __init__(self, data):
@@ -57,6 +58,7 @@ class BinaryTree:
     
     def preorder_traversal_recursive(self, node):
         if node is not None:
+            # Birinci root node print olunur(ziyarət olunur)
             print(node.data, end=" ")
             self.preorder_traversal_recursive(node.left)
             self.preorder_traversal_recursive(node.right)
@@ -75,6 +77,26 @@ class BinaryTree:
                 # Ən son node.left-i append edirik çünki bizə lazımdı sol node-u pop() etsin.
                 if node.left:
                     stack.append(node.left)
+    
+    def inorder_traversal_recursive(self, node):
+        if node is not None:
+            # Birinci sol altağac emal olunur(ziyarət olunur)
+            self.inorder_traversal_recursive(node.left)
+            print(node.data, end=" ")
+            self.inorder_traversal_recursive(node.right)
+    
+    def inorder_traversal_iterative(self, node):
+        if node is not None:
+            stack = []
+            while stack or node:
+                if node:
+                    stack.append(node)
+                    node = node.left
+                else:
+                    node = stack.pop()
+                    print(node.data, end=" ")
+                    node = node.right
+                
 
 
 
@@ -90,4 +112,9 @@ if __name__ == "__main__":
     print("PreOrder Iterative Traversal - ", end="")
     tree.preorder_traversal_iterative(tree.root)
     print("")
-    
+    print("InOrder Recursive Traversal - ", end="")
+    tree.inorder_traversal_recursive(tree.root)
+    print("")
+    print("InOrder Iterative Traversal - ", end="")
+    tree.inorder_traversal_iterative(tree.root)
+    print("")
