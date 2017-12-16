@@ -96,16 +96,41 @@ class BinaryTree:
                     node = stack.pop()
                     print(node.data, end=" ")
                     node = node.right
-                
+    
+    def postorder_traversal_recursive(self, node):
+        if node is not None:
+            self.postorder_traversal_recursive(node.left)
+            self.postorder_traversal_recursive(node.right)
+            print(node.data, end=" ")
+    
+    def postorder_traversal_iterative(self, root):
+        solution = []
+        used = set()
+        stack = []
 
-
+        if root != None:
+            stack.append(root)
+        
+        while len(stack) > 0:
+            node = stack.pop()
+        
+            if node in used:
+                solution.append(node.data)
+            else:
+                used.add(node)
+                stack.append(node)
+                if node.right != None:
+                    stack.append(node.right)
+                if node.left != None:
+                    stack.append(node.left)
+        return solution
 
 if __name__ == "__main__":
     tree = BinaryTree()
     arr = [8, 3, 1, 6, 4, 7, 10, 14, 13]
     for i in arr:
         tree.create_tree(i)
-    
+      
     print("PreOrder Recursive Traversal - ", end="")
     tree.preorder_traversal_recursive(tree.root)
     print("")
@@ -117,4 +142,10 @@ if __name__ == "__main__":
     print("")
     print("InOrder Iterative Traversal - ", end="")
     tree.inorder_traversal_iterative(tree.root)
+    print("")
+    print("PostOrder Recursive Traversal - ", end="")
+    tree.postorder_traversal_recursive(tree.root)
+    print("")
+    print("PostOrder Iterative Traversal - ", end="")
+    print(tree.postorder_traversal_iterative(tree.root))
     print("")
