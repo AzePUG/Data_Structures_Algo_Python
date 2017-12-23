@@ -1,3 +1,5 @@
+from queue import Queue
+
 class Node:
     def __init__(self, data):
         # root node
@@ -64,6 +66,38 @@ class BinaryTree:
 
         return self.max_data
 
+    def find_max_level_order_traversal(self, node):
+        if node is not None:
+            q = Queue()
+            q.put(node) # root node-u daxil edirik.
+
+            while not q.empty():
+                node = q.get() # Dequeue FIFO
+                # növbədən çıxartdıqdan sonra müqayisə edirik.
+                if node.get_data() > self.max_data:
+                    self.max_data = node.get_data()
+
+                if node.left is not None:
+                    q.put(node.left)
+
+                if node.right is not None:
+                    q.put(node.right)
+        
+        return self.max_data
+
+    def find_data_recursive(self, node, data):
+        if node is None:
+            return 0
+
+        if node.get_data() == data:
+            return 1
+        else:
+            temp = self.find_data_recursive(node.left, data)
+            if temp == 1:
+                return temp
+            else:
+                self.find_data_recursive(node.right, data)
+                
 
         
 
@@ -72,5 +106,9 @@ if __name__ == "__main__":
     arr = [8, 3, 1, 6, 4, 7, 10, 14, 13]
     for i in arr:
         tree.create_tree(i)
-    
+    print("find_max_recursive() -> ", end='')
     print(tree.find_max_recursive(tree.root))
+    print("find_max_level_order_traversal() -> ", end='')
+    print(tree.find_max_level_order_traversal(tree.root))
+    print("find_data_recursive() -> ", end='')
+    print(tree.find_data_recursive(tree.root, 14))

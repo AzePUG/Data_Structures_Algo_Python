@@ -17,3 +17,5 @@
 * [Növbələr-queues](./book/7.Növbələr_Queues.md)
 
 * [Ağaclar-trees](./book/8.Ağaclar_Trees.md)
+
+* [İkili ağaclar-tapşırıqlar](./book/9.İkili_Ağaclar_Tapşırıqlar_və_Həllər.md)
