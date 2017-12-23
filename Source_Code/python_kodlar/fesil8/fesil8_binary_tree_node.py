@@ -1,6 +1,8 @@
 # Kod mənbəsi: https://gist.github.com/thinkphp/1450738
 # Lakin, iterativ üsullar və bəzi dəyişikliklər edildi.
 
+from queue import Queue
+
 class Node:
     def __init__(self, data):
         # root node
@@ -125,6 +127,26 @@ class BinaryTree:
                     stack.append(node.left)
         return solution
 
+    def level_order_traversal(self, node):
+        if node is not None:
+            result = []
+            q = Queue()
+            q.put(node) # root node-u daxil edirik.
+
+            while not q.empty():
+                node = q.get() # Dequeue FIFO
+                result.append(node.get_data())
+
+                if node.left is not None:
+                    q.put(node.left)
+
+                if node.right is not None:
+                    q.put(node.right)
+        
+        return result
+        
+        
+
 if __name__ == "__main__":
     tree = BinaryTree()
     arr = [8, 3, 1, 6, 4, 7, 10, 14, 13]
@@ -148,4 +170,5 @@ if __name__ == "__main__":
     print("")
     print("PostOrder Iterative Traversal - ", end="")
     print(tree.postorder_traversal_iterative(tree.root))
-    print("")
+    print("LevelOrder Traversal - ", end="")
+    print(tree.level_order_traversal(tree.root))
