@@ -19,7 +19,7 @@ class Node:
         return self.right
 
 
-class BinaryTree:
+class BinaryTreeExercises:
     
     def __init__(self):
         self.root = None
@@ -91,18 +91,88 @@ class BinaryTree:
 
         if node.get_data() == data:
             return 1
+        elif data < node.get_data(): 
+            return self.find_data_recursive(node.left, data)    
         else:
-            temp = self.find_data_recursive(node.left, data)
-            if temp == 1:
-                return temp
+            return self.find_data_recursive(node.right, data)
+
+    def find_data_level_order_traversal(self, node, data):
+        if node is not None:
+            q = Queue()
+            q.put(node) # root node-u daxil edirik.
+
+            while not q.empty():
+                node = q.get() # Dequeue FIFO
+                # növbədən çıxartdıqdan sonra yoxlayırıq.
+                if node.get_data() == data:
+                    return 1
+                if node.left is not None:
+                    q.put(node.left)
+
+                if node.right is not None:
+                    q.put(node.right)
+        # 0 qayıdırsa, deməli data Ağacda yoxdur.            
+        return 0
+
+    def insert_in_binary_using_tree_level_order(self, node, data):
+        new_node = Node(data)
+        if node is None:
+            node = new_node # Ağac boşdursa, yeni node-u root node edirik.
+            return node
+        
+        q = Queue()
+        q.put(node) # Root node-u növbəyə daxil edirik.
+
+        while not q.empty():
+            node = q.get() # Dequeue FIFO
+            # növbədən çıxartdıqdan sonra yoxlayırıq.
+            if node.get_data() == data:
+                return "Already in tree"
+            if node.left is not None:
+                q.put(node.left)
             else:
-                self.find_data_recursive(node.right, data)
-                
+                # Əgər hal-hazırkı node-un datasından kiçikdirsə
+                if new_node.get_data() < node.get_data():
+                    node.left = new_node
+                    return "Inserted as left node"
+
+            if node.right is not None:
+                q.put(node.right)
+            else:
+                # Əgər hal-hazırkı node-un datasından böyükdürsə
+                if new_node.get_data() > node.get_data():
+                    node.right = new_node
+                    return "Inserted as right node"
+    
+    def find_tree_size_recursive(self, node):
+        if node is None:
+            return 0
+        
+        return self.find_tree_size_recursive(node.left) + self.find_tree_size_recursive(node.right) + 1
+    
+    def find_tree_size_iterative(self, node):
+        if node is None:
+            return 0
+        
+        q = Queue()
+        q.put(node) # Root node-u növbəyə daxil edirik.
+        count = 0
+
+        while not q.empty():
+            node = q.get()
+            count = count + 1
+            if node.left is not None:
+                q.put(node.left)
+            if node.right is not None:
+                q.put(node.right)
+
+        return count
 
         
+            
 
 if __name__ == "__main__":
-    tree = BinaryTree()
+    tree = BinaryTreeExercises()
     arr = [8, 3, 1, 6, 4, 7, 10, 14, 13]
     for i in arr:
         tree.create_tree(i)
@@ -110,5 +180,17 @@ if __name__ == "__main__":
     print(tree.find_max_recursive(tree.root))
     print("find_max_level_order_traversal() -> ", end='')
     print(tree.find_max_level_order_traversal(tree.root))
-    print("find_data_recursive() -> ", end='')
+    print("find_data_recursive() search 88 -> ", end='')
+    print(tree.find_data_recursive(tree.root, 88))
+    print("find_data_recursive() search 14 -> ", end='')
     print(tree.find_data_recursive(tree.root, 14))
+    print("find_data_level_order_traversal() search 88 -> ", end='')
+    print(tree.find_data_level_order_traversal(tree.root, 88))
+    print("find_data_level_order_traversal() search 14 -> ", end='')
+    print(tree.find_data_level_order_traversal(tree.root, 14))
+    print("insert_in_binary_using_tree_level_order(tree.root, 21) -> ", end='')
+    print(tree.insert_in_binary_using_tree_level_order(tree.root, 21))
+    print("find_tree_size_recursive() -> ", end='')
+    print(tree.find_tree_size_recursive(tree.root))
+    print("find_tree_size_iterative() -> ", end='')
+    print(tree.find_tree_size_iterative(tree.root))
