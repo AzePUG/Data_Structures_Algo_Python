@@ -188,6 +188,17 @@ class BinaryTreeExercises:
         
         while(s):
             print(s.pop(), end=' ')
+    
+    def delete_binary_tree(self, node):
+        if node is None:
+            return
+        
+        self.delete_binary_tree(node.left)
+        self.delete_binary_tree(node.right)
+        node.data = None
+        node.left = None
+        node.right = None
+        self.root = None
 
 
 if __name__ == "__main__":
@@ -215,3 +226,12 @@ if __name__ == "__main__":
     print(tree.find_tree_size_iterative(tree.root))
     print("level_order_traversal_in_reverse() -> ", end='')
     tree.level_order_traversal_in_reverse(tree.root)
+    print("")
+    print("delete_binary_tree() -> ")
+    tree.delete_binary_tree(tree.root)
+    print("find_tree_size_recursive() -> ", end='')
+    print(tree.find_tree_size_recursive(tree.root))
+    print("find_tree_size_iterative() -> ", end='')
+    print(tree.find_tree_size_iterative(tree.root))
+
+
