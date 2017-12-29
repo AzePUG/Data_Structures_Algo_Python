@@ -20,24 +20,24 @@ class Node:
 
 
 class BinaryTreeExercises:
-    
+
     def __init__(self):
         self.root = None
         self.max_data = 0.0
-    
+
     def create_tree(self, val):
         # Ağacın özünü burda yaradırıq.
         if self.root is None:
             # Birinci elementi root element edirik
             self.root = Node(data=val)
-        
+
         else:
             # Root-u hazırkı node edirik
             current = self.root
 
             while True:
                 # Əgər verilmiş qiymət hal-hazırkı qiymətdən kiçikdirsə,
-                # Onu sol node edirik  
+                # Onu sol node edirik
                 if val < current.data:
                     if current.left:
                         current = current.left
@@ -45,7 +45,7 @@ class BinaryTreeExercises:
                         current.left = Node(data=val)
                         break;
                 # Əgər verilmiş qiymət hal-hazırkı qiymətdən böyükdürsə,
-                # Onu sağ node edirik  
+                # Onu sağ node edirik
                 elif val > current.data:
                     if current.right:
                         current = current.right
@@ -53,14 +53,14 @@ class BinaryTreeExercises:
                         current.right = Node(data=val)
                 else:
                     break
-    
+
     def find_max_recursive(self, node):
         if not node:
             return self.max_data
 
         if node.get_data() > self.max_data:
             self.max_data = node.get_data()
-        
+
         self.find_max_recursive(node.left)
         self.find_max_recursive(node.right)
 
@@ -82,7 +82,7 @@ class BinaryTreeExercises:
 
                 if node.right is not None:
                     q.put(node.right)
-        
+
         return self.max_data
 
     def find_data_recursive(self, node, data):
@@ -91,8 +91,8 @@ class BinaryTreeExercises:
 
         if node.get_data() == data:
             return 1
-        elif data < node.get_data(): 
-            return self.find_data_recursive(node.left, data)    
+        elif data < node.get_data():
+            return self.find_data_recursive(node.left, data)
         else:
             return self.find_data_recursive(node.right, data)
 
@@ -111,7 +111,7 @@ class BinaryTreeExercises:
 
                 if node.right is not None:
                     q.put(node.right)
-        # 0 qayıdırsa, deməli data Ağacda yoxdur.            
+        # 0 qayıdırsa, deməli data Ağacda yoxdur.
         return 0
 
     def insert_in_binary_using_tree_level_order(self, node, data):
@@ -119,7 +119,7 @@ class BinaryTreeExercises:
         if node is None:
             node = new_node # Ağac boşdursa, yeni node-u root node edirik.
             return node
-        
+
         q = Queue()
         q.put(node) # Root node-u növbəyə daxil edirik.
 
@@ -143,17 +143,17 @@ class BinaryTreeExercises:
                 if new_node.get_data() > node.get_data():
                     node.right = new_node
                     return "Inserted as right node"
-    
+
     def find_tree_size_recursive(self, node):
         if node is None:
             return 0
-        
+
         return self.find_tree_size_recursive(node.left) + self.find_tree_size_recursive(node.right) + 1
-    
+
     def find_tree_size_iterative(self, node):
         if node is None:
             return 0
-        
+
         q = Queue()
         q.put(node) # Root node-u növbəyə daxil edirik.
         count = 0
@@ -168,8 +168,27 @@ class BinaryTreeExercises:
 
         return count
 
+    def level_order_traversal_in_reverse(self, node):
+        if node is None:
+            return 0
         
-            
+        q = Queue()
+        s = [] # LIFO üçün istifadə edəcəyimiz list
+        q.put(node) # root node-u daxil edirik.
+
+        while not q.empty():
+            node = q.get() # Dequeue FIFO
+            s.append(node.get_data()) # LIFO
+
+            if node.left is not None:
+                q.put(node.left)
+
+            if node.right is not None:
+                q.put(node.right)
+        
+        while(s):
+            print(s.pop(), end=' ')
+
 
 if __name__ == "__main__":
     tree = BinaryTreeExercises()
@@ -194,3 +213,5 @@ if __name__ == "__main__":
     print(tree.find_tree_size_recursive(tree.root))
     print("find_tree_size_iterative() -> ", end='')
     print(tree.find_tree_size_iterative(tree.root))
+    print("level_order_traversal_in_reverse() -> ", end='')
+    tree.level_order_traversal_in_reverse(tree.root)
