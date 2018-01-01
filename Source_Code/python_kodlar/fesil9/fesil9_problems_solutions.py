@@ -199,6 +199,110 @@ class BinaryTreeExercises:
         node.left = None
         node.right = None
         self.root = None
+    
+    def max_depth_recursive(self, node):
+        if node is None:
+            return 0
+        return max(self.max_depth_recursive(node.left), self.max_depth_recursive(node.right)) + 1
+
+    def max_depth_iterative(self, node):
+        if node is None:
+            return 0
+        q_list = []
+        q_list.append([node, 1])
+        while q_list:
+            node, depth = q_list.pop() # Buna Python-da unpacking deyilir.
+            if node.left is not None: 
+                q_list.append([node.left, depth + 1]) # Əgər sol node varsa, onu listə əlavə et və depth-i artır.
+            if node.right is not None:
+                q_list.append([node.right, depth + 1]) # Əgər sağ node varsa, onu listə əlavə et və depth-i artır.
+        
+        return depth
+
+    def deepest_node(self, node):
+        if node is None:
+            return 0
+
+        q = Queue()
+        q.put(node)
+
+        while not q.empty():
+            node = q.get()
+            if node.left is not None:
+                q.put(node.left)
+            if node.right is not None:
+                q.put(node.right)
+        
+        return node.get_data()
+        
+    def number_of_leafs_iterative(self, node):
+        
+        if node is None:
+            return 0
+
+        q = Queue()
+        q.put(node)
+        count = 0 # sayğac
+
+        while not q.empty():
+            node = q.get()
+            if (node.left is None) and (node.right is None):
+                count = count + 1
+            else:
+                if node.left is not None:
+                    q.put(node.left)
+                if node.right is not None:
+                    q.put(node.right)
+        
+        return count
+
+    def number_of_full_nodes_iterative(self, node):
+        
+        if node is None:
+            return 0
+
+        q = Queue()
+        q.put(node)
+        count = 0 # sayğac
+
+        while not q.empty():
+            node = q.get()
+            if (node.left is not None) and (node.right is not None):
+                count = count + 1
+            else:
+                if node.left is not None:
+                    q.put(node.left)
+                if node.right is not None:
+                    q.put(node.right)
+        
+        return count
+
+    def number_of_half_nodes_iterative(self, node):
+        if node is None:
+            return 0
+
+        q = Queue()
+        q.put(node)
+        count = 0 # sayğac
+
+        while not q.empty():
+            node = q.get()
+            if (node.left is None and node.right is not None) or \
+               (node.right is None and node.left is not None):
+                count = count + 1
+            else:
+                if node.left is not None:
+                    q.put(node.left)
+                if node.right is not None:
+                    q.put(node.right)
+        
+        return count
+    
+    def check_tree_structures_to_be_same(self, node1, node2):
+        
+        pass
+
+
 
 
 if __name__ == "__main__":
@@ -226,12 +330,24 @@ if __name__ == "__main__":
     print(tree.find_tree_size_iterative(tree.root))
     print("level_order_traversal_in_reverse() -> ", end='')
     tree.level_order_traversal_in_reverse(tree.root)
+    # print("")
+    # print("delete_binary_tree() -> ")
+    # tree.delete_binary_tree(tree.root)
+    # print("find_tree_size_recursive() -> ", end='')
+    # print(tree.find_tree_size_recursive(tree.root))
+    # print("find_tree_size_iterative() -> ", end='')
+    # print(tree.find_tree_size_iterative(tree.root))
     print("")
-    print("delete_binary_tree() -> ")
-    tree.delete_binary_tree(tree.root)
-    print("find_tree_size_recursive() -> ", end='')
-    print(tree.find_tree_size_recursive(tree.root))
-    print("find_tree_size_iterative() -> ", end='')
-    print(tree.find_tree_size_iterative(tree.root))
-
+    print("max_depth_recursive() -> ", end='')
+    print(tree.max_depth_recursive(tree.root))
+    print("max_depth_iterative() -> ", end='')
+    print(tree.max_depth_iterative(tree.root))
+    print("deepest_node() -> ", end='')
+    print(tree.deepest_node(tree.root))
+    print("number_of_leafs_iterative() -> ", end = '')
+    print(tree.number_of_leafs_iterative(tree.root))
+    print("number_of_full_nodes_iterative() -> ", end='')
+    print(tree.number_of_full_nodes_iterative(tree.root))
+    print("number_of_half_nodes_iterative() -> ", end='')
+    print(tree.number_of_half_nodes_iterative(tree.root))
 
