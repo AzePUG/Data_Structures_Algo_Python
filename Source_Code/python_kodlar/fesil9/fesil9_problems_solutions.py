@@ -299,8 +299,22 @@ class BinaryTreeExercises:
         return count
     
     def check_tree_structures_to_be_same(self, node1, node2):
+        # Əgər ağacların nə sol nə də sağ altağacları qalıbsa və data-lar da bərabərdirsə o zaman True qaytarırır.
+        if (not node1.left) and \
+           (not node1.right) and \
+           (not node2.left) and \
+           (not node2.right) and node1.data == node2.data:
+           return True
+        # Aşağıda isə görürük ki, iki ağac bir-biri ilə fərqlənir   
+        if (node1.data != node2.data) or (node1.left and not node2.left) or \
+           (not node1.left and node2.left) or (node1.right and not node2.right) or \
+           (not node1.right and node2.right):
+           return False
+
+        left = self.check_tree_structures_to_be_same(node1.left, node2.left) if node1.left and node2.left else True
+        right = self.check_tree_structures_to_be_same(node1.right, node2.right) if node1.right and node2.right else True
         
-        pass
+        return left and right
 
 
 
@@ -350,4 +364,17 @@ if __name__ == "__main__":
     print(tree.number_of_full_nodes_iterative(tree.root))
     print("number_of_half_nodes_iterative() -> ", end='')
     print(tree.number_of_half_nodes_iterative(tree.root))
+    tree2 = BinaryTreeExercises()
+    arr2 = [8, 3, 1, 6, 4, 7, 10, 14, 13]
+    for i in arr2:
+        tree2.create_tree(i)
+    print("insert_in_binary_using_tree_level_order(tree2.root, 21) -> ", end='')
+    print(tree.insert_in_binary_using_tree_level_order(tree2.root, 21))
+    print("check_tree_structures_to_be_same(tree.root, tree2.root) -> ", end='')
+    print(tree.check_tree_structures_to_be_same(tree.root, tree2.root))
+    print("insert_in_binary_using_tree_level_order(tree2.root, 88) -> ", end='')
+    print(tree.insert_in_binary_using_tree_level_order(tree2.root, 88))
+    print("check_tree_structures_to_be_same(tree.root, tree2.root) -> ", end='')
+    print(tree.check_tree_structures_to_be_same(tree.root, tree2.root))
+
 
