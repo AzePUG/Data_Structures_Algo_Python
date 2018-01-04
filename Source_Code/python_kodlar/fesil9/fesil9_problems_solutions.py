@@ -315,7 +315,24 @@ class BinaryTreeExercises:
         right = self.check_tree_structures_to_be_same(node1.right, node2.right) if node1.right and node2.right else True
         
         return left and right
-
+    
+    def diameter_of_tree(self, node):
+        if node is None:
+            return 0
+    
+        # sol və sağ altağacların hündürlüyünü tapırıq.
+        lheight = self.max_depth_recursive(node.left)
+        rheight = self.max_depth_recursive(node.right)
+    
+        # sol və sağ altağacların diametrlərini tapırıq.
+        ldiameter = self.diameter_of_tree(node.left)
+        rdiameter = self.diameter_of_tree(node.right)
+    
+        # Ağac üçün max dəyəri qaytarmalıyı.
+        # sol və sağ altağacın diametrləri arasından maksimumu tapırıq.
+        # sol və sağ altağacın hündürlüklərini cəmləyib üzərinə 1 gəlirik.
+        # Yuxarıdakı ikisində maksimumu tapırıq.
+        return max(lheight + rheight + 1, max(ldiameter, rdiameter))
 
 
 
@@ -376,5 +393,7 @@ if __name__ == "__main__":
     print(tree.insert_in_binary_using_tree_level_order(tree2.root, 88))
     print("check_tree_structures_to_be_same(tree.root, tree2.root) -> ", end='')
     print(tree.check_tree_structures_to_be_same(tree.root, tree2.root))
+    print("diameter_of_tree() -> ", end='')
+    print(tree.diameter_of_tree(tree.root))
 
 
