@@ -19,3 +19,5 @@
 * [Ağaclar-trees](./book/8.Ağaclar_Trees.md)
 
 * [İkili ağaclar-tapşırıqlar](./book/9.İkili_Ağaclar_Tapşırıqlar_və_Həllər.md)
+
+* [Düzülü İkili Ağaclar(Threaded Binary Tree Traversals)](./book/10.Düzülü_İkili_Ağaclar_Threaded_Binary _Tree_Traversals.md)
