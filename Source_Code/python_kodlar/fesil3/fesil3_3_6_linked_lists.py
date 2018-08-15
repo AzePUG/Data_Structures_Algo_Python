@@ -113,6 +113,8 @@ class SinglyLinkedList:
 
             previous_node.set_next_node(None)
 
+            del(current_node)
+
     def delete_from_list_by_data(self, data):
         # Burada, current, tapılan node-u, data-ya əsasən silirik.
         current_node = self.head
