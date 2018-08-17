@@ -76,7 +76,7 @@ class BinaryTree:
                 print(node.data, end=" ")
                 if node.right:
                     stack.append(node.right)
-                # Ən son node.left-i append edirik çünki bizə lazımdı sol node-u pop() etsin.
+                # Ən sonda node.left-i append edirik çünki bizə lazımdı sol node-u pop() etsin.
                 if node.left:
                     stack.append(node.left)
     
