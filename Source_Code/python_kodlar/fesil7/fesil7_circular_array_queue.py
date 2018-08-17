@@ -33,8 +33,9 @@ class CircularQueue:
         if self.is_empty():
             print("Növbə boşdur...")
         else:
-            # Silmirik, sadəcə geri qaytarırıq
-            data = self.que[self.front]
+            # Python list element silindikdən sonra, listi özü yenidən indexlədiyi üçün.
+            # Həmişə pop(0) olaraq çağırmaq lazımdır. pop(self.front) düzgün nəticə vermir.
+            data = self.que.pop(0)
             # Əgər bərabərdilərsə o zaman cəmi 1 elementi var, bu səbəbdən sildikdən sonra resetləyirik.
             if self.front == self.rear:
                 self.front = -1

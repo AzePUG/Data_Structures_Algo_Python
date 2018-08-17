@@ -48,11 +48,12 @@ class CircularLinkedList:
         if current_node is None:
             return 0
 
-        current_node = current_node.get_next_node()
         print(current_node.get_data())
+        current_node = current_node.get_next_node()
         while current_node != self.head:
-            current_node = current_node.get_next_node()
             print(current_node.get_data())
+            current_node = current_node.get_next_node()
+            
 
     def insert_at_end(self, data):
         current_node = self.head
