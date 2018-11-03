@@ -99,6 +99,7 @@ class BSTree:
 
 
     def predecessor_bst(self, root):
+        # Inorder Predecessor
         temp = None
         if root.get_left_child():
             temp = root.get_left_child()
@@ -108,6 +109,7 @@ class BSTree:
 
 
     def successor_bst(self, root):
+        # Inorder Successor
         temp = None
         if root.get_right_child():
             temp = root.get_right_child()
@@ -132,6 +134,45 @@ class BSTree:
         return node_data
 
 
+    def delete_node(self, root, node_data):
+        # Düz işləmir!
+        # Base Case
+        if root is None:
+            return root
+        # Əgər silinməli olan dəyər root dəyərdən kiçikdirsə,
+        # deməli sol altağacda axatarmaq lazımdır.
+        if node_data < root.get_data():
+            root.left = self.delete_node(root.get_left_child(), node_data)
+        # Əgər silinməli olan dəyər root dəyərdən böyükdürsə,
+        # deməli sağ altağacda axatarmaq lazımdır.
+        elif node_data > root.get_data():
+            root.right = self.delete_node(root.get_right_child(), node_data)
+        # Bu halda deməli silinməli node-u tapmışıq
+        else:
+            # Bir child-ı olan və yaxud ümumiyyətlə child-ı olmayan Node üçün
+            if root.get_left_child() is None :
+                temp = root.get_right_child()
+                root = None
+                return temp
+
+            elif root.get_right_child() is None :
+                temp = root.get_left_child()
+                root = None
+                return temp
+
+            # İki child-ı olan Node üçün: inorder successor-u tapırıq
+            # (sağ altağacda ən kiçik)
+            temp = self.successor_bst(root.get_right_child())
+            # inorder successor-un dəyərini bu node-a mənimsədirik.
+            root.data = temp.get_data()
+
+            # inorder successor-u silirik.
+            root.right = self.delete_node(root.get_right_child() , temp.get_data())
+
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -152,4 +193,6 @@ if __name__ == "__main__":
     print("Inorder Predecessor -> ", tree.predecessor_bst(tree.root).data)
     print("Inorder Successor -> ", tree.successor_bst(tree.root).data)
     print("BST-yə element daxil edirik -> ", tree.insert_node(tree.root, 25))
+    print("Maximal elementi axtarmaq rekursiv -> ", tree.find_max_element(tree.root).data)
+    print("BST-dən element silirik -> ", tree.delete_node(tree.root, 25))
     print("Maximal elementi axtarmaq rekursiv -> ", tree.find_max_element(tree.root).data)
