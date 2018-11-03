@@ -115,6 +115,24 @@ class BSTree:
                 temp = temp.get_left_child()
         return temp
 
+    def insert_node(self, root, node_data):
+        if root is None:
+            root = BSTNode(data=node_data)
+        else:
+            if node_data < root.get_data():
+                if root.get_left_child() is None:
+                    root.left = BSTNode(data=node_data)
+                else:
+                    self.insert_node(root.get_left_child(), node_data)
+            else:
+                if root.get_right_child() is None:
+                    root.right = BSTNode(data=node_data)
+                else:
+                    self.insert_node(root.get_right_child(), node_data)
+        return node_data
+
+
+
 
 if __name__ == "__main__":
     tree = BSTree()
@@ -133,3 +151,5 @@ if __name__ == "__main__":
 
     print("Inorder Predecessor -> ", tree.predecessor_bst(tree.root).data)
     print("Inorder Successor -> ", tree.successor_bst(tree.root).data)
+    print("BST-yə element daxil edirik -> ", tree.insert_node(tree.root, 25))
+    print("Maximal elementi axtarmaq rekursiv -> ", tree.find_max_element(tree.root).data)
