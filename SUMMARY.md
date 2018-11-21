@@ -23,3 +23,5 @@
 * [Düzülü İkili Ağaclar](./book/10.Düzülü_İkili_Ağaclar_Threaded_Binary_Tree_Traversals.md)
 
 * [İkili Axtarış Ağacları - BST](./book/11.İkili_Axtarış_Ağacları_Binary_Search_Trees.md)
+
+* [Sıralama - Sorting](./book/12.Sıralama_Sorting.md)
